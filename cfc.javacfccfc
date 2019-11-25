@@ -1,0 +1,95 @@
+package cfc;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class cfc {
+
+	private JFrame frame;
+	private JTextField textField;
+	private JButton btnToCelsius;
+	private JButton btnToFahrenheit;
+	private JLabel label;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					cfc window = new cfc();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public cfc() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblDegrees = new JLabel("Degrees");
+		lblDegrees.setBounds(85, 50, 75, 30);
+		frame.getContentPane().add(lblDegrees);
+		
+		textField = new JTextField();
+		textField.setBounds(170, 50, 141, 30);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		label = new JLabel("");
+		label.setBounds(89, 111, 219, 23);
+		frame.getContentPane().add(label);
+		
+		
+		btnToCelsius = new JButton("To Celsius");
+		btnToCelsius.setBounds(68, 167, 121, 23);
+		btnToCelsius.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String a=textField.getText();                
+                float number=Float.valueOf(a);
+                float c=(number-32)*5/9;
+                String b=String.valueOf(c);
+                label.setText("Result="+b);	
+				
+			}
+		});
+		frame.getContentPane().add(btnToCelsius);
+		
+		btnToFahrenheit = new JButton("To Fahrenheit");
+		btnToFahrenheit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String a=textField.getText();                
+                float number=Float.valueOf(a);
+                float c=(number*1.8f)+32;
+                String b=String.valueOf(c);
+                label.setText("Result="+b);
+			}
+		});
+		btnToFahrenheit.setBounds(222, 167, 121, 23);
+		frame.getContentPane().add(btnToFahrenheit);
+		
+		
+	}
+
+}
