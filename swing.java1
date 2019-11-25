@@ -1,0 +1,87 @@
+package swingsample;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class swing {
+
+	private JFrame frame;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JButton btnSubmit;
+	private JLabel label;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					swing window = new swing();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public swing() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblUsername = new JLabel("username");
+		lblUsername.setBounds(37, 43, 59, 14);
+		frame.getContentPane().add(lblUsername);
+		
+		JLabel lblPassword = new JLabel("password");
+		lblPassword.setBounds(37, 87, 69, 14);
+		frame.getContentPane().add(lblPassword);
+		
+		textField = new JTextField();
+		textField.setBounds(130, 41, 101, 17);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(130, 84, 101, 17);
+		frame.getContentPane().add(textField_1);
+		textField_1.setColumns(10);
+		label = new JLabel("");
+		label.setBounds(129, 159, 126, 22);
+		frame.getContentPane().add(label);
+		btnSubmit = new JButton("submit");
+		btnSubmit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			if(textField.getText().equals("vineeth")&&textField_1.getText().equals("1234"))
+					label.setText("success");
+					else
+						label.setText("unsuccessfull");
+			}
+				
+		});
+		btnSubmit.setBounds(130, 112, 76, 17);
+		frame.getContentPane().add(btnSubmit);
+		
+		
+	}
+}
